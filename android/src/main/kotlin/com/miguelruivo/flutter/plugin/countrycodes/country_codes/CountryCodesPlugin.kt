@@ -1,14 +1,16 @@
 package com.miguelruivo.flutter.plugin.countrycodes.country_codes
 
 import android.R
+import android.os.Build
 import java.util.Locale
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import io.flutter.plugin.common.PluginRegistry.Registrar
+//import io.flutter.plugin.common.PluginRegistry.Registrar
 
 /** CountryCodesPlugin */
 public class CountryCodesPlugin: FlutterPlugin, MethodCallHandler {
@@ -26,13 +28,13 @@ public class CountryCodesPlugin: FlutterPlugin, MethodCallHandler {
   // them functionally equivalent. Only one of onAttachedToEngine or registerWith will be called
   // depending on the user's project. onAttachedToEngine or registerWith must both be defined
   // in the same class.
-  companion object {
-    @JvmStatic
-    fun registerWith(registrar: Registrar) {
-      val channel = MethodChannel(registrar.messenger(), "country_codes")
-      channel.setMethodCallHandler(CountryCodesPlugin())
-    }
-  }
+//  companion object {
+//    @JvmStatic
+//    fun registerWith(registrar: Registrar) {
+//      val channel = MethodChannel(registrar.messenger(), "country_codes")
+//      channel.setMethodCallHandler(CountryCodesPlugin())
+//    }
+//  }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
 
@@ -43,6 +45,7 @@ public class CountryCodesPlugin: FlutterPlugin, MethodCallHandler {
         else -> result.notImplemented()
     }
   }
+
 
   private fun getLocalizedCountryNames(localeTag: String?) : HashMap<String, String> {
     var localizedCountries: HashMap<String,String> = HashMap()
